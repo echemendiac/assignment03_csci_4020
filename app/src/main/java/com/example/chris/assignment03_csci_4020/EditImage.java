@@ -21,10 +21,10 @@ public class EditImage extends View {
     private int currentHeight;
 
     private Paint backgroundPaint;
-    private Paint ballPaint;
+    private Paint userPaint;
 
     private AnimateThread animateThread;
-    private ArrayList<Ball> balls;
+    private ArrayList<Pen> pens;
 
     private Random random;
 
@@ -50,11 +50,11 @@ public class EditImage extends View {
         backgroundPaint.setColor(0xffffcccc);
         backgroundPaint.setStyle(Paint.Style.FILL);
 
-        ballPaint = new Paint();
-        ballPaint.setStyle(Paint.Style.FILL);
+        userPaint = new Paint();
+        userPaint.setStyle(Paint.Style.FILL);
 
         random = new Random();
-        balls = new ArrayList<>();
+        pens = new ArrayList<>();
 
         loadBitmap();
 
@@ -69,32 +69,28 @@ public class EditImage extends View {
 
     }
 
-    public void addBall() {
-        Ball ball = new Ball(BALL_SIZE_DPI, BALL_SIZE_STEP);
-        balls.add(ball);
-    }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawPaint(backgroundPaint);
 
-        int size = balls.size();
+        int size = pens.size();
         for (int i = 0; i < size; i++) {
-            Ball ball = balls.get(i);
+            Pen pen = pens.get(i);
 
             // ----- Uncomment if you want to see the
-            // ----- bouncing balls
+            // ----- bouncing pens
             /*
-            ballPaint.setColor(ball.color);
+            userPaint.setColor(pen.color);
 
-            canvas.drawOval(ball.x, ball.y,
-                    ball.x + ball.sizePixels, ball.y + ball.sizePixels,
-                    ballPaint);
+            canvas.drawOval(pen.x, pen.y,
+                    pen.x + pen.sizePixels, pen.y + pen.sizePixels,
+                    userPaint);
             */
 
             // only needed if drawing the bitmap
-            canvas.drawBitmap(smileBitmap, ball.x, ball.y, ballPaint);
+            canvas.drawBitmap(smileBitmap, pen.x, pen.y, userPaint);
         }
     }
 
@@ -125,24 +121,24 @@ public class EditImage extends View {
         @Override
         public void run() {
             while (running) {
-                int size = balls.size();
+                int size = pens.size();
                 if (size > 0) {
                     for (int i = 0; i < size; i++) {
-                        Ball ball = balls.get(i);
+                        Pen pen = pens.get(i);
 
-                        ball.x += ball.xStep;
-                        ball.y += ball.yStep;
+                        pen.x += pen.xStep;
+                        pen.y += pen.yStep;
 
-                        if (ball.x < 0) {
-                            ball.xStep = -ball.xStep;
-                        } else if (ball.x + ball.sizePixels > currentWidth) {
-                            ball.xStep = -ball.xStep;
+                        if (pen.x < 0) {
+                            pen.xStep = -pen.xStep;
+                        } else if (pen.x + pen.sizePixels > currentWidth) {
+                            pen.xStep = -pen.xStep;
                         }
 
-                        if (ball.y < 0) {
-                            ball.yStep = -ball.yStep;
-                        } else if (ball.y + ball.sizePixels > currentHeight) {
-                            ball.yStep = -ball.yStep;
+                        if (pen.y < 0) {
+                            pen.yStep = -pen.yStep;
+                        } else if (pen.y + pen.sizePixels > currentHeight) {
+                            pen.yStep = -pen.yStep;
                         }
 
                     }
@@ -157,7 +153,7 @@ public class EditImage extends View {
         }
     }
 
-    private class Ball {
+    private class Pen {
         int x;
         int y;
         float sizePixels;
@@ -165,7 +161,7 @@ public class EditImage extends View {
         float yStep;
         int color;
 
-        Ball(int ballSizeDpi, int stepDpi) {
+        Pen(int ballSizeDpi, int stepDpi) {
             color = random.nextInt(0x1000000) + 0xff000000;
 
             DisplayMetrics dm = getResources().getDisplayMetrics();

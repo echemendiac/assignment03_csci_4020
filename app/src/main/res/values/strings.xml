@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Draw-A-Pic</string>
+    <string name="menu_button">menu\n^</string>
 </resources>
