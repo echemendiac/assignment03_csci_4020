@@ -36,12 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Constructor
-     */
-    MainActivity (){
-
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
