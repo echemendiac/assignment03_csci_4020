@@ -5,7 +5,7 @@
     tools:context=".MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--Bottom Layer 0 START-->
+    <!-- Layer 0 START-->
     <RelativeLayout
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
@@ -30,7 +30,7 @@
 
             android:layout_above="@+id/toolbar_rl"
             /><!--android:background="#93acba"-->
-        <!--Bottom of Layout 0 START-->
+        <!-- Footer of Layout 0 START-->
         <RelativeLayout
             android:id="@+id/toolbar_rl"
             android:layout_width="match_parent"
@@ -38,19 +38,33 @@
             android:layout_alignParentBottom="true"
             android:onClick="showMenu"
             android:padding="@dimen/spacing">
+            <TextView
+                android:id="@+id/thick_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2px thick"
+                android:textSize="@dimen/textSize"
+                android:textColor="@android:color/white"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/spacing"
+                android:layout_alignParentLeft="true"/>
+
             <Button
                 android:id="@+id/menu_b"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/menu_button"
+                android:textColor="@android:color/black"
                 android:background="@drawable/menu_button"
                 android:onClick="showMenu"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"/>
             <TextView
+                android:id="@+id/shape_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Color:"
+                android:text="Freeform"
+                android:textSize="@dimen/textSize"
                 android:textColor="@android:color/white"
                 android:layout_alignParentBottom="true"
                 android:layout_marginRight="@dimen/spacing"
@@ -59,15 +73,15 @@
                 android:id="@+id/color_iv"
                 android:layout_width="@dimen/color_button_square"
                 android:layout_height="@dimen/color_button_square"
-                android:text="@string/menu_button"
                 android:background="#000000"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 />
 
         </RelativeLayout>
+        <!-- Footer of Layout 0 END -->
     </RelativeLayout>
-    <!--END bottom Layer-->
+    <!--END Layer 0-->
     <!--Next Layer 1-->
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_1"
@@ -91,6 +105,7 @@
 
         <!--Color Buttons START -->
         <LinearLayout
+            android:id="@+id/colorButton_ll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -148,6 +163,115 @@
 
         </LinearLayout>
         <!-- Color Buttons END -->
+
+        <!-- Shape Selction START -->
+        <LinearLayout
+            android:id="@+id/shape_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/colorButton_ll"
+            android:layout_margin="@dimen/spacing"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/freeForm_b"
+                android:text="Free Form :"
+                android:background="@drawable/white_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing"
+                android:onClick="selectShape"
+                android:textColor="@android:color/black"
+                />
+
+            <Button
+                android:id="@+id/rectangle_b"
+                android:text="Rectangle :"
+                android:background="@drawable/white_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing"
+                android:onClick="selectShape"
+                android:textColor="@android:color/black"
+                />
+
+            <Button
+                android:id="@+id/circle_b"
+                android:text="Circle :"
+                android:background="@drawable/white_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing"
+                android:onClick="selectShape"
+                android:textColor="@android:color/black"
+                />
+
+        </LinearLayout>
+        <!-- Shape Selection Buttons END -->
+
+        <!-- Thickness Selection START -->
+        <TextView
+            android:id="@+id/thickness_tv"
+            android:text="Select Line Thickness"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSize"
+            android:layout_marginTop="@dimen/spacing"
+            app:layout_constraintTop_toBottomOf="@+id/shape_ll"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            app:layout_constraintTop_toBottomOf="@+id/thickness_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing"
+            android:gravity="center_horizontal"
+            >
+            <Button
+                android:id="@+id/size2"
+                android:background="@drawable/white_button"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2 px"
+                android:layout_marginRight="@dimen/spacing"
+                />
+            <Button
+                android:id="@+id/size4"
+                android:background="@drawable/white_button"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 px"
+                android:layout_marginRight="@dimen/spacing"
+                />
+            <Button
+                android:id="@+id/size10"
+                android:background="@drawable/white_button"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 px"
+                android:layout_marginRight="@dimen/spacing"
+                />
+            <Button
+                android:id="@+id/size15"
+                android:background="@drawable/white_button"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15 px"
+                android:layout_marginRight="@dimen/spacing"
+                />
+        </LinearLayout>
+        <!-- Thickness Selection END -->
+
+        <!-- Select Image Button START -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -166,10 +290,14 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/spacing"
                 android:background="@drawable/button_border"
                 android:text="Select Image"
+                android:textColor="@android:color/black"
             />
         </LinearLayout>
+        <!-- Select Image Button END -->
+
     </android.support.constraint.ConstraintLayout>
     <!--END Layer 1-->
     <!--START Layer 2-->

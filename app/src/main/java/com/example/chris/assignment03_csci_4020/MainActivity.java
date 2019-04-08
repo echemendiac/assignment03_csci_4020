@@ -124,4 +124,52 @@ public class MainActivity extends AppCompatActivity {
         View view = findViewById(R.id.layout_1);
         view.setVisibility(View.INVISIBLE);
     }
+
+    /**
+     * This function is the listener for shape selection buttons
+     * @param v Passes in the button view
+     */
+    public void selectShape(View v){
+        TextView tv = findViewById(R.id.shape_tv);
+
+        switch(v.getId()){
+            case R.id.rectangle_b:
+                tv.setText("Rectangle");
+                break;
+            case R.id.circle_b:
+                tv.setText("Circle");
+                break;
+            case R.id.freeForm_b:
+                tv.setText("Free Form");
+                break;
+                default: tv.setText("ERROR");
+        }
+
+    }
+
+    /**
+     * This function is the listener for shape selection buttons
+     * @param v Passes in the button view
+     */
+    public void selectThickness(View v){
+        TextView tv = findViewById(R.id.thickness_tv);
+
+        switch(v.getId()){
+            case R.id.size2:
+                tv.setText("2px thick");
+                break;
+            case R.id.size4:
+                tv.setText("4px thick");
+                break;
+            case R.id.size10:
+                tv.setText("10px thick");
+                break;
+            case R.id.size15:
+                tv.setText("15px thick");
+                break;
+            default: tv.setText("ERROR");
+        }
+
+    }
 }
+
