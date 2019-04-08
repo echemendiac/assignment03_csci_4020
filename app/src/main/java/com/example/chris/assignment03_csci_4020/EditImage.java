@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class EditImage extends View {
-    private static final int BALL_SIZE_DPI = 50;
-    private static final int BALL_SIZE_STEP = 5;
+    private static final int PEN_SIZE_DPI = 50;
+    private static final int PEN_SIZE_STEP = 5;
 
     private int currentWidth;
     private int currentHeight;
@@ -63,7 +63,7 @@ public class EditImage extends View {
     private void loadBitmap() {
 
         DisplayMetrics dm = getResources().getDisplayMetrics();
-        int sizePixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, BALL_SIZE_DPI, dm);
+        int sizePixels = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, PEN_SIZE_DPI, dm);
         smileBitmap = Bitmap.createBitmap(sizePixels, sizePixels, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(smileBitmap);
 
@@ -161,11 +161,11 @@ public class EditImage extends View {
         float yStep;
         int color;
 
-        Pen(int ballSizeDpi, int stepDpi) {
+        Pen(int penSizeDpi, int stepDpi) {
             color = random.nextInt(0x1000000) + 0xff000000;
 
             DisplayMetrics dm = getResources().getDisplayMetrics();
-            sizePixels = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, ballSizeDpi, dm);
+            sizePixels = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, penSizeDpi, dm);
 
             xStep = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, stepDpi, dm);
             yStep = xStep;
