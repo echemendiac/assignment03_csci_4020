@@ -14,7 +14,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:background="@android:color/background_dark"
+        android:background="@color/colorPrimaryDark"
         >
 
         <com.example.chris.assignment03_csci_4020.EditImage
@@ -22,23 +22,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:background="#0000ff"
 
             android:layout_alignParentRight="true"
-            android:background="#93acba"
-            android:layout_above="@+id/menu_b"
-            />
-        <Button
-            android:id="@+id/menu_b"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/menu_button"
-            android:background="@drawable/menu_button"
-            android:onClick="showMenu"
+
+            android:layout_above="@+id/toolbar_rl"
+            /><!--android:background="#93acba"-->
+        <!--Bottom of Layout 0 START-->
+        <RelativeLayout
+            android:id="@+id/toolbar_rl"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"/>
+            android:onClick="showMenu"
+            android:padding="@dimen/spacing">
+            <Button
+                android:id="@+id/menu_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/menu_button"
+                android:background="@drawable/menu_button"
+                android:onClick="showMenu"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Color:"
+                android:textColor="@android:color/white"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="@dimen/spacing"
+                android:layout_toStartOf="@+id/color_iv"/>
+            <ImageView
+                android:id="@+id/color_iv"
+                android:layout_width="@dimen/color_button_square"
+                android:layout_height="@dimen/color_button_square"
+                android:text="@string/menu_button"
+                android:background="#000000"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                />
+
+        </RelativeLayout>
     </RelativeLayout>
     <!--END bottom Layer-->
     <!--Next Layer 1-->
@@ -61,19 +88,66 @@
             android:background="@drawable/close_button"
             android:layout_margin="@dimen/activity_vertical_margin"
             />
+
+        <!--Color Buttons START -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/close_b">
+            app:layout_constraintTop_toBottomOf="@id/close_b"
+            android:layout_margin="@dimen/spacing"
+            android:gravity="center_horizontal">
+
             <Button
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:id="@+id/colorb_1"
+                android:layout_width="@dimen/color_button_square"
+                android:layout_height="@dimen/color_button_square"
+                android:layout_marginLeft="@dimen/spacing"
+                android:layout_marginRight="@dimen/spacing"
+                android:id="@+id/black_b"
+                android:onClick="selectColor"
+                android:background="#000000"/>
+
+            <Button
+                android:layout_width="@dimen/color_button_square"
+                android:layout_height="@dimen/color_button_square"
+                android:layout_marginLeft="@dimen/spacing"
+                android:layout_marginRight="@dimen/spacing"
+                android:id="@+id/white_b"
+                android:onClick="selectColor"
+                android:background="#ffffff"/>
+
+            <Button
+                android:layout_width="@dimen/color_button_square"
+                android:layout_height="@dimen/color_button_square"
+                android:layout_marginLeft="@dimen/spacing"
+                android:layout_marginRight="@dimen/spacing"
+                android:id="@+id/red_b"
+                android:onClick="selectColor"
+                android:background="#ff0000"/>
+
+            <Button
+                android:layout_width="@dimen/color_button_square"
+                android:layout_height="@dimen/color_button_square"
+                android:layout_marginLeft="@dimen/spacing"
+                android:layout_marginRight="@dimen/spacing"
+                android:id="@+id/green_b"
+                android:onClick="selectColor"
+                android:background="#00ff00"/>
+
+
+            <Button
+                android:layout_width="@dimen/color_button_square"
+                android:layout_height="@dimen/color_button_square"
+                android:layout_marginLeft="@dimen/spacing"
+                android:layout_marginRight="@dimen/spacing"
+                android:id="@+id/blue_b"
+                android:onClick="selectColor"
                 android:background="#0000ff"/>
+
         </LinearLayout>
+        <!-- Color Buttons END -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,18 +171,21 @@
             />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
+    <!--END Layer 1-->
+    <!--START Layer 2-->
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#99000000"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:onClick="showMenu">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Click Here to Begin"
-            android:onClick="showMenu"
+            android:text="Click Anywhere to Begin"
+
             android:textColor="#f2cc21"
             android:textStyle="bold"
             android:textSize="30sp"
@@ -118,6 +195,7 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </android.support.constraint.ConstraintLayout>
+    <!--END Layer 2 -->
 
-    <!--END Layer 1-->
+
 </FrameLayout>
