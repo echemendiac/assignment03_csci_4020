@@ -178,7 +178,7 @@
 
             <Button
                 android:id="@+id/freeForm_b"
-                android:text="Free Form :"
+                android:text="Free Form"
                 android:background="@drawable/white_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
 
             <Button
                 android:id="@+id/rectangle_b"
-                android:text="Rectangle :"
+                android:text="Rectangle"
                 android:background="@drawable/white_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
 
             <Button
                 android:id="@+id/circle_b"
-                android:text="Circle :"
+                android:text="Circle"
                 android:background="@drawable/white_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -240,6 +240,7 @@
                 android:layout_height="wrap_content"
                 android:text="2 px"
                 android:layout_marginRight="@dimen/spacing"
+                android:onClick="selectThickness"
                 />
             <Button
                 android:id="@+id/size4"
@@ -249,6 +250,7 @@
                 android:layout_height="wrap_content"
                 android:text="4 px"
                 android:layout_marginRight="@dimen/spacing"
+                android:onClick="selectThickness"
                 />
             <Button
                 android:id="@+id/size10"
@@ -258,6 +260,7 @@
                 android:layout_height="wrap_content"
                 android:text="10 px"
                 android:layout_marginRight="@dimen/spacing"
+                android:onClick="selectThickness"
                 />
             <Button
                 android:id="@+id/size15"
@@ -267,6 +270,7 @@
                 android:layout_height="wrap_content"
                 android:text="15 px"
                 android:layout_marginRight="@dimen/spacing"
+                android:onClick="selectThickness"
                 />
         </LinearLayout>
         <!-- Thickness Selection END -->

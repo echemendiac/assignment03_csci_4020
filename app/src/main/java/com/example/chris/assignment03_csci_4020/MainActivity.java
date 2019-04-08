@@ -152,7 +152,8 @@ public class MainActivity extends AppCompatActivity {
      * @param v Passes in the button view
      */
     public void selectThickness(View v){
-        TextView tv = findViewById(R.id.thickness_tv);
+        TextView tv = findViewById(R.id.thick_tv);
+        Log.i("selectThickness","I am running");
 
         switch(v.getId()){
             case R.id.size2:
